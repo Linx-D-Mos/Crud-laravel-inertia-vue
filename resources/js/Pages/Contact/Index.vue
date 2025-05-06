@@ -59,7 +59,7 @@ const contacts = page.props.contacts
                                         {{ contact.privacity }}
                                     </th>
                                     <th className="px-6 py-4">
-                                        <img class="h-16" :src="`/storage/${contact.avatar}`" />
+                                        <img class="h-20" :src="`/storage/${contact.avatar}`" />
                                     </th>
                                     <th className="px-6 py-4">
                                         <div>
