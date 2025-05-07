@@ -25,9 +25,15 @@ const onSelectAavatar = (e) => {
     }
     console.log(form.avatar)
 }
-const submit = ()=>{
-    console.log("klk")
-    form.post(route('contact.update',contact.value))
+const submit = () => {
+
+    form.post(route('contact.update', contact.value),
+        {
+            onSuccess: (e) => {
+                contact.value = e.props.contact;
+
+            }
+        })
 }
 </script>
 
@@ -52,6 +58,14 @@ const submit = ()=>{
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="flex justify-center overflow-hidden bg-white shadow-sm sm:rounded-lg">
                     <form class="w-1/3 py-5 space-y-3" @submit.prevent="submit">
+                        <!-- alerta de exito -->
+                        <Transition enter-active-class="transition ease-in-out" enter-from-class="opacity-0"
+                            leave-active-class="transition ease-in-out" leave-to-class="opacity-0">
+                            <p v-if="form.recentlySuccessful" class="text-sm text-green-600 text-center">
+                                Contacto actualizado.
+                            </p>
+                        </Transition>
+
                         <div>
                             <InputLabel for="name" value="Nombre" />
 

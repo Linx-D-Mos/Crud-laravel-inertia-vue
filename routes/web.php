@@ -31,6 +31,8 @@ Route::prefix('dashboard')->group(function(){
     Route::post('contacts',[ContactController::class,'store'])->name('contact.store');
     Route::get('contacts/{contact}/edit', [ContactController::class,'edit'])->name('contact.edit');
     Route::post('contacts/{contact}', [ContactController::class,'update'])->name('contact.update');
+    Route::delete('contacts/{contact}', [ContactController::class,'destroy'])->name('contact.destroy');
+
 });
 
 require __DIR__.'/auth.php';

@@ -62,9 +62,12 @@ const contacts = page.props.contacts
                                         <img class="h-20" :src="`/storage/${contact.avatar}`" />
                                     </th>
                                     <th className="px-6 py-4">
-                                        <div>
+                                        <div class="space-x-4">
                                             <Link :href="route('contact.edit', contact)">
                                                 Editar
+                                            </Link>
+                                            <Link :href="route('contact.destroy', contact)" method="delete" as="button">
+                                                Eliminar
                                             </Link>
                                         </div>
                                     </th>

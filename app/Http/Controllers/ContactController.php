@@ -80,7 +80,7 @@ class ContactController extends Controller
             }
         }
         $contact->update($data);
-        return redirect()->route('contact.index');
+        return redirect()->route('contact.edit',$contact);
     }
 
     /**
@@ -88,6 +88,10 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        if($contact->avatar){
+            Storage::disk('public')->delete($contact->avatar);
+        }
+        $contact->delete();
+        return to_route('contact.index');
     }
 }
